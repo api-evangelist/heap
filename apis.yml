@@ -1,0 +1,31 @@
+aid: heap
+name: Heap
+description: >-
+  Heap is a digital analytics platform that automatically captures user interactions for product and behavioral analysis.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API Analysis
+  - Product Analytics
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: heap:heap
+    name: Heap
+    description: >-
+      Heap is a digital analytics platform that automatically captures user interactions for product and behavioral analysis.
+    humanURL: https://www.heap.io
+    tags:
+      - API Analysis
+    properties:
+      - type: Documentation
+        url: https://developers.heap.io
+common:
+  - type: Website
+    url: https://www.heap.io
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
