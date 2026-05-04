@@ -1,0 +1,55 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Heap
+providerId: heap
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Product Analytics
+description: FOCUS-aligned FinOps for Heap.
+sources:
+  - https://heap.io/pricing
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Heap
+serviceCategory: Product Analytics
+billingModel:
+  pricingCategory: Custom Session-Based Annual Contract
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: Heap
+  ServiceCategory: Product Analytics
+  ProviderName: Heap
+  PublisherName: Heap
+  BillingCurrency: USD
+meters:
+  - name: monthly_sessions
+    unit: session
+    aggregation: sum
+  - name: session_replays
+    unit: replay
+    aggregation: sum
+  - name: active_users
+    unit: user
+    aggregation: max
+  - name: subscription
+    unit: month
+    aggregation: max
+principles:
+  - name: Visibility
+    description: Track Heap consumption monthly.
+  - name: Allocation
+    description: Tag usage to teams/cost centers.
+  - name: Optimization
+    description: Right-size; reclaim unused entitlements.
+  - name: Accountability
+    description: Set spend alerts; quarterly review.

@@ -1,0 +1,112 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Heap
+providerId: heap
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Product Analytics
+  - Session-Based
+description: Heap session-based pricing across Free / Growth / Pro / Premier (custom contracts).
+sources:
+  - https://heap.io/pricing
+plans:
+  - id: heap-free
+    name: Free
+    type: freemium
+    description: Up to 10K monthly sessions; 6 months data history.
+    entries:
+      - label: Monthly sessions
+        name: sessions
+        type: quota
+        metric: session
+        limit: 10000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Data history
+        name: history
+        type: quota
+        metric: month
+        limit: 6
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Core analytics charts
+      - name: Unlimited enrichment sources
+      - name: Guides integrations
+      - name: SSO
+  - id: heap-growth
+    name: Growth
+    type: enterprise
+    description: Custom session-based pricing; 12 months data history.
+    entries:
+      - label: Annual (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Sense AI Assistant
+      - name: Unlimited users + reports
+      - name: Chart customization
+      - name: CSV exports
+      - name: 12 months history
+      - name: Email support
+      - name: Professional Services included
+  - id: heap-pro
+    name: Pro
+    type: enterprise
+    description: Custom session pricing.
+    entries:
+      - label: Annual (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Account analytics
+      - name: Engagement matrix
+      - name: Report alerts
+      - name: Session Replay (add-on)
+      - name: 3 projects (add-on for more)
+  - id: heap-premier
+    name: Premier
+    type: enterprise
+    description: Custom session pricing; data warehouse + region storage.
+    entries:
+      - label: Annual (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Data warehouse integration
+      - name: Behavioral targeting
+      - name: Unlimited projects
+      - name: Advanced user permissions
+      - name: Dedicated CSM
+      - name: Premium support
+      - name: Region-specific storage

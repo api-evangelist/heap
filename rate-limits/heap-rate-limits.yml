@@ -1,0 +1,34 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Heap
+providerId: heap
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Analytics
+description: Heap REST + ingest API rate limits per project.
+sources:
+  - https://heap.io/pricing
+  - https://developers.heap.io/reference/rate-limits
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: Track API
+    scope: project
+    metric: events_per_second
+    limit: high (auto-scales)
+  - name: REST API
+    scope: project
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+  - name: Bulk identify
+    scope: request
+    metric: users
+    limit: 1000
+    timeFrame: request
