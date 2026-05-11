@@ -137,6 +137,10 @@ common:
     sources:
       - https://heap.io/pricing
     updated: '2026-05-04'
+  - type: Integrations
+    url: https://www.heap.io/partners
+integrations:
+  - name: heap partners
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
