@@ -106,7 +106,7 @@ common:
     url: https://www.heap.io/pricing
   - type: Login
     url: https://heapanalytics.com/app/login
-  - type: Signup
+  - type: SignUp
     url: https://heapanalytics.com/signup
   - type: Support
     url: https://help.heap.io
