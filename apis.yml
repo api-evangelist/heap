@@ -92,6 +92,10 @@ apis:
       - type: Documentation
         url: https://developers.heap.io/reference/add-account-properties-1
 common:
+  - type: GitHubOrganization
+    url: https://github.com/heap
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/heap-inc-
   - type: Website
     url: https://www.heap.io
   - type: Documentation
