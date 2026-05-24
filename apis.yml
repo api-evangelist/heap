@@ -143,6 +143,8 @@ common:
     updated: '2026-05-04'
   - type: Integrations
     url: https://www.heap.io/partners
+  - type: LLMsTxt
+    url: https://developers.heap.io/llms.txt
 integrations:
   - name: heap partners
 maintainers:
