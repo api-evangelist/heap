@@ -15,7 +15,7 @@ tags:
   - User Behavior
 url: https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-05-04'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - aid: heap:server-side-api
@@ -91,6 +91,25 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.heap.io/reference/add-account-properties-1
+  - aid: heap:partner-webhooks
+    name: Heap Partner Webhooks (Data-out API)
+    description: Heap's partner webhook surface (also called the Data-out API) delivers behavioral segment
+      membership deltas to partner-hosted HTTPS endpoints. The documented action type is segment.users.sync,
+      which sends adds and removes for a Heap segment on a roughly four-hour cadence. Requests are signed
+      with a Heap-Hash header containing a timestamp and HMAC-SHA256 of the body using a shared webhook
+      secret key, and partners are expected to verify the signature and respond 200 OK to avoid retries.
+    humanURL: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
+    tags:
+      - Analytics
+      - Segments
+      - Webhooks
+    properties:
+      - type: Documentation
+        url: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
+      - type: Reference
+        url: https://github.com/heap/heap-partner-api-reference
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/openapi/heap-webhooks-openapi.yml
 common:
   - type: GitHubOrganization
     url: https://github.com/heap
