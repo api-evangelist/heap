@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Heap Server-Side API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Track a server-side event",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://heapanalytics.com/api/track",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Track a server-side event"
+    },
+    {
+      "info": {
+        "name": "Identify a user",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://heapanalytics.com/api/v1/identify",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Migrates all events from an anonymous user_id to an identified user.\nOne identity is allowed per user_id; a maximum of 10 user_ids can be\nassociated with an identity in a rolling one-month window.\n"
+    },
+    {
+      "info": {
+        "name": "Add user properties",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://heapanalytics.com/api/add_user_properties",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Add user properties"
+    },
+    {
+      "info": {
+        "name": "Add account properties",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://heapanalytics.com/api/add_account_properties",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update properties on one or more accounts. Either provide a single\n`account_id`/`properties` pair or an `accounts` array for bulk updates.\nAccount configuration (or Salesforce integration) must be enabled for\nthe workspace.\n"
+    }
+  ],
+  "bundled": true
+}

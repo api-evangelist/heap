@@ -1,0 +1,310 @@
+{
+  "item": [
+    {
+      "id": "d3c4d239-2a22-4ec6-94a2-8d0203995449",
+      "name": "Webhooks",
+      "description": {
+        "content": "Partner-registered webhook endpoints invoked by Heap. The only\ndocumented action type is `segment.users.sync`, which delivers\ndelta adds/removes for a Heap behavioral segment.\n\nSignature verification:\n  1. Parse the `Heap-Hash` header (comma-separated key:value pairs).\n  2. Confirm the `ts` value is within the partner's tolerance window.\n  3. Concatenate `${ts}${requestbody}`.\n  4. Compute HMAC-SHA256 using the `webhook_secret_key` assigned at\n     webhook creation.\n  5. Constant-time compare against the `hmac` value from the header.\n\nReturn `200 OK` on success; `429` or other non-2xx responses trigger\nretries by Heap.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66b53376-2da9-4c8f-9edf-51c95c7b56be",
+          "name": "segment.users.sync webhook receiver",
+          "request": {
+            "name": "segment.users.sync webhook receiver",
+            "description": {
+              "content": "Heap POSTs a delta sync payload to the partner's registered webhook\nURL whenever segment membership changes need to be propagated.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":partner_webhook_sync_url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner_webhook_sync_url",
+                  "description": "(Required) Partner-registered HTTPS path that receives segment syncs."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Heap signature header. Comma-separated key:value pairs containing a\ntimestamp (`ts`) and HMAC-SHA256 signature (`hmac`).\n",
+                "key": "Heap-Hash",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_token\": \"<uuid>\",\n  \"action_type\": \"<string>\",\n  \"customer_config\": {\n    \"fields\": [\n      {\n        \"field_id\": \"<string>\",\n        \"field_display_name\": \"<string>\",\n        \"field_type\": \"<string>\",\n        \"value\": {\n          \"id\": \"<string>\",\n          \"display_name\": \"<string>\"\n        }\n      },\n      {\n        \"field_id\": \"<string>\",\n        \"field_display_name\": \"<string>\",\n        \"field_type\": \"<string>\",\n        \"value\": {\n          \"id\": \"<string>\",\n          \"display_name\": \"<string>\"\n        }\n      }\n    ]\n  },\n  \"data\": {\n    \"segment\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"sync_info\": {\n      \"page_number\": \"<long>\",\n      \"total_pages\": \"<long>\",\n      \"sync_task_id\": \"<uuid>\"\n    },\n    \"add\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"remove\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbb53208-4d7b-41ed-b129-fd29aa0cc391",
+              "name": "Sync acknowledged.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":partner_webhook_sync_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_webhook_sync_url",
+                      "description": "(Required) Partner-registered HTTPS path that receives segment syncs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Heap signature header. Comma-separated key:value pairs containing a\ntimestamp (`ts`) and HMAC-SHA256 signature (`hmac`).\n",
+                    "key": "Heap-Hash",
+                    "value": "ts:150000000,hmac:XXXXXXXXX"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id_token\": \"7a36ae58-c4b9-11eb-8529-0242ac130003\",\n  \"action_type\": \"segment.users.sync\",\n  \"customer_config\": {\n    \"fields\": [\n      {\n        \"field_id\": \"workspace\",\n        \"field_display_name\": \"Workspace\",\n        \"value\": {\n          \"id\": \"workspace_1\",\n          \"display_name\": \"Workspace 1\"\n        }\n      }\n    ]\n  },\n  \"data\": {\n    \"segment\": {\n      \"id\": 1338065,\n      \"name\": \"Free Customers\"\n    },\n    \"sync_info\": {\n      \"page_number\": 1,\n      \"total_pages\": 5,\n      \"sync_task_id\": \"afe74af0-496e-11ec-81d3-0242ac130003\"\n    },\n    \"add\": [\n      {\n        \"id\": \"user1@email.com\"\n      },\n      {\n        \"id\": \"user2@email.com\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bce01441-2e5b-4d2e-b37e-256ecf486665",
+              "name": "Signature verification failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":partner_webhook_sync_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_webhook_sync_url",
+                      "description": "(Required) Partner-registered HTTPS path that receives segment syncs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Heap signature header. Comma-separated key:value pairs containing a\ntimestamp (`ts`) and HMAC-SHA256 signature (`hmac`).\n",
+                    "key": "Heap-Hash",
+                    "value": "ts:150000000,hmac:XXXXXXXXX"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id_token\": \"7a36ae58-c4b9-11eb-8529-0242ac130003\",\n  \"action_type\": \"segment.users.sync\",\n  \"customer_config\": {\n    \"fields\": [\n      {\n        \"field_id\": \"workspace\",\n        \"field_display_name\": \"Workspace\",\n        \"value\": {\n          \"id\": \"workspace_1\",\n          \"display_name\": \"Workspace 1\"\n        }\n      }\n    ]\n  },\n  \"data\": {\n    \"segment\": {\n      \"id\": 1338065,\n      \"name\": \"Free Customers\"\n    },\n    \"sync_info\": {\n      \"page_number\": 1,\n      \"total_pages\": 5,\n      \"sync_task_id\": \"afe74af0-496e-11ec-81d3-0242ac130003\"\n    },\n    \"add\": [\n      {\n        \"id\": \"user1@email.com\"\n      },\n      {\n        \"id\": \"user2@email.com\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid signature\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cee7625-bf5e-40db-addd-0d02a682e44e",
+              "name": "Rate limited; Heap will retry.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":partner_webhook_sync_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_webhook_sync_url",
+                      "description": "(Required) Partner-registered HTTPS path that receives segment syncs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Heap signature header. Comma-separated key:value pairs containing a\ntimestamp (`ts`) and HMAC-SHA256 signature (`hmac`).\n",
+                    "key": "Heap-Hash",
+                    "value": "ts:150000000,hmac:XXXXXXXXX"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id_token\": \"7a36ae58-c4b9-11eb-8529-0242ac130003\",\n  \"action_type\": \"segment.users.sync\",\n  \"customer_config\": {\n    \"fields\": [\n      {\n        \"field_id\": \"workspace\",\n        \"field_display_name\": \"Workspace\",\n        \"value\": {\n          \"id\": \"workspace_1\",\n          \"display_name\": \"Workspace 1\"\n        }\n      }\n    ]\n  },\n  \"data\": {\n    \"segment\": {\n      \"id\": 1338065,\n      \"name\": \"Free Customers\"\n    },\n    \"sync_info\": {\n      \"page_number\": 1,\n      \"total_pages\": 5,\n      \"sync_task_id\": \"afe74af0-496e-11ec-81d3-0242ac130003\"\n    },\n    \"add\": [\n      {\n        \"id\": \"user1@email.com\"\n      },\n      {\n        \"id\": \"user2@email.com\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13a1bffb-9ba9-4285-a3bb-3a86c7e7fb7c",
+              "name": "Unexpected 4XX/5XX response; Heap will retry.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":partner_webhook_sync_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_webhook_sync_url",
+                      "description": "(Required) Partner-registered HTTPS path that receives segment syncs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Heap signature header. Comma-separated key:value pairs containing a\ntimestamp (`ts`) and HMAC-SHA256 signature (`hmac`).\n",
+                    "key": "Heap-Hash",
+                    "value": "ts:150000000,hmac:XXXXXXXXX"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id_token\": \"7a36ae58-c4b9-11eb-8529-0242ac130003\",\n  \"action_type\": \"segment.users.sync\",\n  \"customer_config\": {\n    \"fields\": [\n      {\n        \"field_id\": \"workspace\",\n        \"field_display_name\": \"Workspace\",\n        \"value\": {\n          \"id\": \"workspace_1\",\n          \"display_name\": \"Workspace 1\"\n        }\n      }\n    ]\n  },\n  \"data\": {\n    \"segment\": {\n      \"id\": 1338065,\n      \"name\": \"Free Customers\"\n    },\n    \"sync_info\": {\n      \"page_number\": 1,\n      \"total_pages\": 5,\n      \"sync_task_id\": \"afe74af0-496e-11ec-81d3-0242ac130003\"\n    },\n    \"add\": [\n      {\n        \"id\": \"user1@email.com\"\n      },\n      {\n        \"id\": \"user2@email.com\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://partner.example.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b98926a5-639a-4966-8c8f-964ae6396ab1",
+    "name": "Heap Partner Webhooks (Data-out API)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Heap's partner webhook surface (also called the \"Data-out API\") delivers\nbehavioral segment membership deltas to partner-hosted endpoints. The\nonly documented webhook action today is `segment.users.sync`, which\nsends adds and removes for a Heap segment on a roughly 4-hour cadence.\n\nPartners register an HTTPS endpoint with Heap and receive POST requests\nsigned with a `Heap-Hash` header (timestamp + HMAC-SHA256 of the body\nusing a shared `webhook_secret_key`). Implementations should verify the\ntimestamp is within tolerance, recompute the signature, and respond\n`200 OK` to avoid retries.\n\nSource: https://github.com/heap/heap-partner-api-reference (webhook_spec.yaml)\n\n\nContact Support:\n Name: Heap Developers",
+      "type": "text/plain"
+    }
+  }
+}

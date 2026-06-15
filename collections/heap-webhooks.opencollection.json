@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Heap Partner Webhooks (Data-out API)",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "segment.users.sync webhook receiver",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://partner.example.com/:partner_webhook_sync_url",
+            "headers": [
+              {
+                "name": "Heap-Hash",
+                "value": "ts:150000000,hmac:XXXXXXXXX"
+              }
+            ],
+            "params": [
+              {
+                "name": "partner_webhook_sync_url",
+                "value": "heap_webhook",
+                "type": "path",
+                "description": "Partner-registered HTTPS path that receives segment syncs."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Heap POSTs a delta sync payload to the partner's registered webhook\nURL whenever segment membership changes need to be propagated.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
