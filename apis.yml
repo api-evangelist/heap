@@ -129,7 +129,7 @@ common:
     url: https://www.heap.io/pricing
   - type: Login
     url: https://heapanalytics.com/app/login
-  - type: SignUp
+  - type: Signup
     url: https://heapanalytics.com/signup
   - type: Support
     url: https://help.heap.io
@@ -162,7 +162,7 @@ common:
     updated: '2026-05-04'
   - type: Integrations
     url: https://www.heap.io/partners
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developers.heap.io/llms.txt
 integrations:
   - name: heap partners
