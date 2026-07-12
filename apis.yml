@@ -111,6 +111,10 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/openapi/heap-webhooks-openapi.yml
 common:
+  - type: TrustCenter
+    url: security/heap-trust-center.yml
+  - type: DomainSecurity
+    url: security/heap-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/heap
   - type: LinkedIn
