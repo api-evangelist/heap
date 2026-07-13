@@ -2,13 +2,14 @@
   "repo": "heap",
   "feeds": [
     {
-      "source": "https://www.heap.io/blog",
-      "feed_url": "",
+      "source": "https://developers.heap.io/reference/authentication",
+      "feed_url": "https://developers.heap.io/reference/authentication",
+      "title": "",
       "saved": 0,
-      "method": "agent-scrape"
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T12:45:39Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "agent_pulled": "2026-06-27"
 }
