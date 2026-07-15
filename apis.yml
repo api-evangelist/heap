@@ -111,6 +111,8 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/openapi/heap-webhooks-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/heap-agentic-access.yml
   - type: TrustCenter
     url: security/heap-trust-center.yml
   - type: DomainSecurity
