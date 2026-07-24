@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: Heap Server-Side Add Account Properties Identify API
+  description: 'Heap''s server-side APIs let backend services send events, attach
+
+    identities, and update user/account properties in a Heap workspace.
+
+    All requests are JSON POSTs against https://heapanalytics.com. The
+
+    workspace is identified via the `app_id` (environment ID) included in
+
+    each request body.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Heap Developers
+    url: https://developers.heap.io/
+servers:
+- url: https://heapanalytics.com
+  description: Heap analytics ingestion server
+tags:
+- name: Identify
+paths:
+  /api/v1/identify:
+    post:
+      summary: Identify a user
+      description: 'Migrates all events from an anonymous user_id to an identified user.
+
+        One identity is allowed per user_id; a maximum of 10 user_ids can be
+
+        associated with an identity in a rolling one-month window.
+
+        '
+      operationId: identify
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentifyRequest'
+      responses:
+        '200':
+          description: Identity recorded.
+        '400':
+          description: Invalid request parameters.
+      tags:
+      - Identify
+components:
+  schemas:
+    IdentifyRequest:
+      type: object
+      required:
+      - app_id
+      - identity
+      - user_id
+      properties:
+        app_id:
+          type: string
+          description: Environment ID of your Heap project.
+        identity:
+          type: string
+          maxLength: 255
+          description: Case-sensitive identity, typically a user identifier.
+        user_id:
+          type: string
+          description: The user_id from the Heap SDK (numeric string).
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp; defaults to current time.

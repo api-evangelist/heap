@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Heap Server-Side Add Account Properties API
+  description: 'Heap''s server-side APIs let backend services send events, attach
+
+    identities, and update user/account properties in a Heap workspace.
+
+    All requests are JSON POSTs against https://heapanalytics.com. The
+
+    workspace is identified via the `app_id` (environment ID) included in
+
+    each request body.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Heap Developers
+    url: https://developers.heap.io/
+servers:
+- url: https://heapanalytics.com
+  description: Heap analytics ingestion server
+tags:
+- name: Add Account Properties
+paths:
+  /api/add_account_properties:
+    post:
+      summary: Add account properties
+      description: 'Update properties on one or more accounts. Either provide a single
+
+        `account_id`/`properties` pair or an `accounts` array for bulk updates.
+
+        Account configuration (or Salesforce integration) must be enabled for
+
+        the workspace.
+
+        '
+      operationId: addAccountProperties
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddAccountPropertiesRequest'
+      responses:
+        '200':
+          description: Account properties updated.
+        '400':
+          description: Invalid request parameters.
+      tags:
+      - Add Account Properties
+components:
+  schemas:
+    AccountUpdate:
+      type: object
+      required:
+      - account_id
+      properties:
+        account_id:
+          type: string
+          description: Identifier for the account.
+        properties:
+          $ref: '#/components/schemas/Properties'
+    Properties:
+      type: object
+      description: 'Key-value pairs of properties. Keys and string values must be under
+
+        1024 characters; values may be strings or numbers.
+
+        '
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number
+    AddAccountPropertiesRequest:
+      type: object
+      required:
+      - app_id
+      properties:
+        app_id:
+          type: integer
+          format: int32
+          description: Environment ID of your Heap project.
+        account_id:
+          type: string
+          description: Single account identifier (use with `properties`).
+        properties:
+          $ref: '#/components/schemas/Properties'
+        accounts:
+          type: array
+          description: Bulk list of account updates.
+          items:
+            $ref: '#/components/schemas/AccountUpdate'

@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Heap Server-Side Add Account Properties Add User Properties API
+  description: 'Heap''s server-side APIs let backend services send events, attach
+
+    identities, and update user/account properties in a Heap workspace.
+
+    All requests are JSON POSTs against https://heapanalytics.com. The
+
+    workspace is identified via the `app_id` (environment ID) included in
+
+    each request body.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Heap Developers
+    url: https://developers.heap.io/
+servers:
+- url: https://heapanalytics.com
+  description: Heap analytics ingestion server
+tags:
+- name: Add User Properties
+paths:
+  /api/add_user_properties:
+    post:
+      summary: Add user properties
+      operationId: addUserProperties
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddUserPropertiesRequest'
+      responses:
+        '200':
+          description: User properties updated.
+        '400':
+          description: Invalid request parameters.
+      tags:
+      - Add User Properties
+components:
+  schemas:
+    AddUserPropertiesRequest:
+      type: object
+      required:
+      - app_id
+      - identity
+      properties:
+        app_id:
+          type: string
+          description: Environment ID of your Heap project.
+        identity:
+          type: string
+          maxLength: 255
+          description: User identity to update.
+        properties:
+          $ref: '#/components/schemas/Properties'
+    Properties:
+      type: object
+      description: 'Key-value pairs of properties. Keys and string values must be under
+
+        1024 characters; values may be strings or numbers.
+
+        '
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number

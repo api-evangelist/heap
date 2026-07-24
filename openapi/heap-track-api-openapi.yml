@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: Heap Server-Side Add Account Properties Track API
+  description: 'Heap''s server-side APIs let backend services send events, attach
+
+    identities, and update user/account properties in a Heap workspace.
+
+    All requests are JSON POSTs against https://heapanalytics.com. The
+
+    workspace is identified via the `app_id` (environment ID) included in
+
+    each request body.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Heap Developers
+    url: https://developers.heap.io/
+servers:
+- url: https://heapanalytics.com
+  description: Heap analytics ingestion server
+tags:
+- name: Track
+paths:
+  /api/track:
+    post:
+      summary: Track a server-side event
+      operationId: track
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrackRequest'
+      responses:
+        '200':
+          description: Event accepted.
+        '400':
+          description: Invalid request parameters.
+      tags:
+      - Track
+components:
+  schemas:
+    TrackRequest:
+      type: object
+      required:
+      - app_id
+      - event
+      properties:
+        app_id:
+          type: string
+          description: Environment ID of your Heap project.
+        event:
+          type: string
+          maxLength: 1024
+          description: Server-side event name.
+        identity:
+          type: string
+          maxLength: 255
+          description: User identifier. Mutually exclusive with `user_id`.
+        user_id:
+          type: string
+          description: Numeric string between 0 and 2^53 - 1. Mutually exclusive with `identity`.
+        session_id:
+          type: string
+          description: Optional session identifier.
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp; defaults to current time.
+        idempotency_key:
+          type: string
+          description: Unique ID to prevent event duplication.
+        properties:
+          $ref: '#/components/schemas/Properties'
+    Properties:
+      type: object
+      description: 'Key-value pairs of properties. Keys and string values must be under
+
+        1024 characters; values may be strings or numbers.
+
+        '
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number
