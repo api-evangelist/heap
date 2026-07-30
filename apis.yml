@@ -5,7 +5,19 @@ description: Heap is a digital analytics platform that automatically captures ev
   session replay, and behavioral data science capabilities to help teams understand user behavior and
   improve digital experiences.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/heap.png
 tags:
   - Analytics
   - Autocapture
@@ -18,98 +30,167 @@ created: '2026-03-26'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
-  - aid: heap:server-side-api
-    name: Heap Server-Side API
-    description: The Heap Server-Side API allows developers to send track, identify, and add user properties
-      events to Heap from backend servers. It supports sending custom events and user properties that
-      cannot be captured through Heap's automatic client-side tracking, such as server-side transactions,
-      subscription changes, and backend process completions.
-    humanURL: https://developers.heap.io/reference/server-side-apis-overview
-    tags:
-      - Analytics
-      - Events
-      - Server-Side
-      - Tracking
-    properties:
-      - type: Documentation
-        url: https://developers.heap.io/reference/server-side-apis-overview
-      - type: GettingStarted
-        url: https://developers.heap.io/docs/getting-started
-  - aid: heap:track-api
-    name: Heap Track API
-    description: The Heap Track API enables developers to send custom track events from server-side applications
-      to Heap. Each event includes an identity, event name, and optional properties. This API is used
-      to capture important backend events such as purchases, subscription upgrades, or other server-side
-      actions that supplement Heap's automatic client-side tracking.
-    humanURL: https://developers.heap.io/reference/track-1
-    tags:
-      - Analytics
-      - Events
-      - Tracking
-    properties:
-      - type: Documentation
-        url: https://developers.heap.io/reference/track-1
-  - aid: heap:identify-api
-    name: Heap Identify API
-    description: The Heap Identify API allows developers to associate a user identity with Heap's automatically
-      captured data from the server side. This enables linking anonymous user sessions to known user identities
-      when authentication or identification occurs on the backend rather than the client side.
-    humanURL: https://developers.heap.io/reference/identify-1
-    tags:
-      - Analytics
-      - Identity
-      - Users
-    properties:
-      - type: Documentation
-        url: https://developers.heap.io/reference/identify-1
-  - aid: heap:add-user-properties-api
-    name: Heap Add User Properties API
-    description: The Heap Add User Properties API enables developers to attach custom properties to user
-      profiles from server-side applications. These properties can include attributes such as subscription
-      tier, account type, company name, or any other user-level data that enriches Heap's behavioral analytics
-      and segmentation capabilities.
-    humanURL: https://developers.heap.io/reference/add-user-properties-1
-    tags:
-      - Analytics
-      - Properties
-      - Users
-    properties:
-      - type: Documentation
-        url: https://developers.heap.io/reference/add-user-properties-1
-  - aid: heap:add-account-properties-api
-    name: Heap Add Account Properties API
-    description: The Heap Add Account Properties API allows developers to attach custom properties to
-      account-level profiles from server-side applications. This is used for B2B analytics scenarios where
-      users belong to organizations or accounts, enabling analysis at the account level in addition to
-      the individual user level.
-    humanURL: https://developers.heap.io/reference/add-account-properties-1
-    tags:
-      - Accounts
-      - Analytics
-      - B2B
-      - Properties
-    properties:
-      - type: Documentation
-        url: https://developers.heap.io/reference/add-account-properties-1
-  - aid: heap:partner-webhooks
-    name: Heap Partner Webhooks (Data-out API)
-    description: Heap's partner webhook surface (also called the Data-out API) delivers behavioral segment
-      membership deltas to partner-hosted HTTPS endpoints. The documented action type is segment.users.sync,
-      which sends adds and removes for a Heap segment on a roughly four-hour cadence. Requests are signed
-      with a Heap-Hash header containing a timestamp and HMAC-SHA256 of the body using a shared webhook
-      secret key, and partners are expected to verify the signature and respond 200 OK to avoid retries.
-    humanURL: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
-    tags:
-      - Analytics
-      - Segments
-      - Webhooks
-    properties:
-      - type: Documentation
-        url: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
-      - type: Reference
-        url: https://github.com/heap/heap-partner-api-reference
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/openapi/heap-webhooks-openapi.yml
+- aid: heap:server-side-api
+  name: Heap Server-Side API
+  description: >-
+    The Heap Server-Side API allows developers to send track, identify, and add user properties events
+    to Heap from backend servers. It supports sending custom events and user properties that cannot be
+    captured through Heap's automatic client-side tracking, such as server-side transactions, subscription
+    changes, and backend process completions.
+  humanURL: https://developers.heap.io/reference/server-side-apis-overview
+  tags:
+  - Analytics
+  - Events
+  - Server-Side
+  - Tracking
+  properties:
+  - type: Documentation
+    url: https://developers.heap.io/reference/server-side-apis-overview
+  - type: GettingStarted
+    url: https://developers.heap.io/docs/getting-started
+- aid: heap:track-api
+  name: Heap Track API
+  description: >-
+    The Heap Track API enables developers to send custom track events from server-side applications to
+    Heap. Each event includes an identity, event name, and optional properties. This API is used to capture
+    important backend events such as purchases, subscription upgrades, or other server-side actions that
+    supplement Heap's automatic client-side tracking.
+  humanURL: https://developers.heap.io/reference/track-1
+  tags:
+  - Analytics
+  - Events
+  - Tracking
+  properties:
+  - type: Documentation
+    url: https://developers.heap.io/reference/track-1
+- aid: heap:identify-api
+  name: Heap Identify API
+  description: >-
+    The Heap Identify API allows developers to associate a user identity with Heap's automatically captured
+    data from the server side. This enables linking anonymous user sessions to known user identities when
+    authentication or identification occurs on the backend rather than the client side.
+  humanURL: https://developers.heap.io/reference/identify-1
+  tags:
+  - Analytics
+  - Identity
+  - Users
+  properties:
+  - type: Documentation
+    url: https://developers.heap.io/reference/identify-1
+- aid: heap:add-user-properties-api
+  name: Heap Add User Properties API
+  description: >-
+    The Heap Add User Properties API enables developers to attach custom properties to user profiles from
+    server-side applications. These properties can include attributes such as subscription tier, account
+    type, company name, or any other user-level data that enriches Heap's behavioral analytics and segmentation
+    capabilities.
+  humanURL: https://developers.heap.io/reference/add-user-properties-1
+  tags:
+  - Analytics
+  - Properties
+  - Users
+  properties:
+  - type: Documentation
+    url: https://developers.heap.io/reference/add-user-properties-1
+- aid: heap:add-account-properties-api
+  name: Heap Add Account Properties API
+  description: >-
+    The Heap Add Account Properties API allows developers to attach custom properties to account-level
+    profiles from server-side applications. This is used for B2B analytics scenarios where users belong
+    to organizations or accounts, enabling analysis at the account level in addition to the individual
+    user level.
+  humanURL: https://developers.heap.io/reference/add-account-properties-1
+  tags:
+  - Accounts
+  - Analytics
+  - B2B
+  - Properties
+  properties:
+  - type: Documentation
+    url: https://developers.heap.io/reference/add-account-properties-1
+- aid: heap:heap-add-account-properties-api
+  name: Heap Add Account Properties API
+  description: The Add Account Properties API from Heap — 1 operation(s) for add account properties.
+  humanURL: https://developers.heap.io/reference/server-side-apis-overview
+  tags:
+  - Add Account Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/heap-add-account-properties-api-openapi.yml
+  - type: Documentation
+    url: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
+  - type: Reference
+    url: https://github.com/heap/heap-partner-api-reference
+- aid: heap:heap-add-user-properties-api
+  name: Heap Add User Properties API
+  description: The Add User Properties API from Heap — 1 operation(s) for add user properties.
+  humanURL: https://developers.heap.io/reference/server-side-apis-overview
+  tags:
+  - Add User Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/heap-add-user-properties-api-openapi.yml
+  - type: Documentation
+    url: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
+  - type: Reference
+    url: https://github.com/heap/heap-partner-api-reference
+- aid: heap:heap-identify-api
+  name: Heap Identify API
+  description: The Identify API from Heap — 1 operation(s) for identify.
+  humanURL: https://developers.heap.io/reference/server-side-apis-overview
+  tags:
+  - Identify
+  properties:
+  - type: OpenAPI
+    url: openapi/heap-identify-api-openapi.yml
+  - type: Documentation
+    url: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
+  - type: Reference
+    url: https://github.com/heap/heap-partner-api-reference
+- aid: heap:heap-track-api
+  name: Heap Track API
+  description: The Track API from Heap — 1 operation(s) for track.
+  humanURL: https://developers.heap.io/reference/server-side-apis-overview
+  tags:
+  - Track
+  properties:
+  - type: OpenAPI
+    url: openapi/heap-track-api-openapi.yml
+  - type: Documentation
+    url: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
+  - type: Reference
+    url: https://github.com/heap/heap-partner-api-reference
+- aid: heap:heap-webhooks-api
+  name: Heap Webhooks API
+  description: >-
+    Partner-registered webhook endpoints invoked by Heap. The only
+
+    documented action type is `segment.users.sync`, which delivers
+
+    delta adds/removes for a Heap behavioral segment.
+
+
+    Signature verification:
+      1. Parse the `Heap-Hash` header (comma-separated key:value pairs).
+      2. Confirm the `ts` value is within the partner's tolerance window.
+      3. Concatenate `${ts}${requestbody}`.
+      4. Compute HMAC-SHA256 using the `webhook_secret_key` assigned at
+         webhook creation.
+      5. Constant-time compare against the `hmac` value from the header.
+
+    Return `200 OK` on success; `429` or other non-2xx responses trigger
+
+    retries by Heap.
+  humanURL: https://developers.heap.io/reference/server-side-apis-overview
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/heap-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.heap.io/docs/creating-a-new-heap-integration-partners
+  - type: Reference
+    url: https://github.com/heap/heap-partner-api-reference
 common:
   - type: AgenticAccess
     url: agentic-access/heap-agentic-access.yml
