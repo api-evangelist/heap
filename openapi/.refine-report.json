@@ -1,0 +1,22 @@
+{
+  "provider": "heap",
+  "sources": [
+    "heap-add-account-properties-api-openapi.yml",
+    "heap-add-user-properties-api-openapi.yml",
+    "heap-identify-api-openapi.yml",
+    "heap-track-api-openapi.yml",
+    "heap-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "heap-add-account-properties-api-openapi.yml",
+    "heap-add-user-properties-api-openapi.yml",
+    "heap-identify-api-openapi.yml",
+    "heap-track-api-openapi.yml",
+    "heap-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

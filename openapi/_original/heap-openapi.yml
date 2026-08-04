@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: Heap Server-Side API
+  description: |
+    Heap's server-side APIs let backend services send events, attach
+    identities, and update user/account properties in a Heap workspace.
+    All requests are JSON POSTs against https://heapanalytics.com. The
+    workspace is identified via the `app_id` (environment ID) included in
+    each request body.
+  version: "1.0.0"
+  contact:
+    name: Heap Developers
+    url: https://developers.heap.io/
+servers:
+  - url: https://heapanalytics.com
+    description: Heap analytics ingestion server
+paths:
+  /api/track:
+    post:
+      summary: Track a server-side event
+      operationId: track
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrackRequest'
+      responses:
+        "200":
+          description: Event accepted.
+        "400":
+          description: Invalid request parameters.
+  /api/v1/identify:
+    post:
+      summary: Identify a user
+      description: |
+        Migrates all events from an anonymous user_id to an identified user.
+        One identity is allowed per user_id; a maximum of 10 user_ids can be
+        associated with an identity in a rolling one-month window.
+      operationId: identify
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentifyRequest'
+      responses:
+        "200":
+          description: Identity recorded.
+        "400":
+          description: Invalid request parameters.
+  /api/add_user_properties:
+    post:
+      summary: Add user properties
+      operationId: addUserProperties
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddUserPropertiesRequest'
+      responses:
+        "200":
+          description: User properties updated.
+        "400":
+          description: Invalid request parameters.
+  /api/add_account_properties:
+    post:
+      summary: Add account properties
+      description: |
+        Update properties on one or more accounts. Either provide a single
+        `account_id`/`properties` pair or an `accounts` array for bulk updates.
+        Account configuration (or Salesforce integration) must be enabled for
+        the workspace.
+      operationId: addAccountProperties
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddAccountPropertiesRequest'
+      responses:
+        "200":
+          description: Account properties updated.
+        "400":
+          description: Invalid request parameters.
+components:
+  schemas:
+    Properties:
+      type: object
+      description: |
+        Key-value pairs of properties. Keys and string values must be under
+        1024 characters; values may be strings or numbers.
+      additionalProperties:
+        oneOf:
+          - type: string
+          - type: number
+    TrackRequest:
+      type: object
+      required:
+        - app_id
+        - event
+      properties:
+        app_id:
+          type: string
+          description: Environment ID of your Heap project.
+        event:
+          type: string
+          maxLength: 1024
+          description: Server-side event name.
+        identity:
+          type: string
+          maxLength: 255
+          description: User identifier. Mutually exclusive with `user_id`.
+        user_id:
+          type: string
+          description: Numeric string between 0 and 2^53 - 1. Mutually exclusive with `identity`.
+        session_id:
+          type: string
+          description: Optional session identifier.
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp; defaults to current time.
+        idempotency_key:
+          type: string
+          description: Unique ID to prevent event duplication.
+        properties:
+          $ref: '#/components/schemas/Properties'
+    IdentifyRequest:
+      type: object
+      required:
+        - app_id
+        - identity
+        - user_id
+      properties:
+        app_id:
+          type: string
+          description: Environment ID of your Heap project.
+        identity:
+          type: string
+          maxLength: 255
+          description: Case-sensitive identity, typically a user identifier.
+        user_id:
+          type: string
+          description: The user_id from the Heap SDK (numeric string).
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp; defaults to current time.
+    AddUserPropertiesRequest:
+      type: object
+      required:
+        - app_id
+        - identity
+      properties:
+        app_id:
+          type: string
+          description: Environment ID of your Heap project.
+        identity:
+          type: string
+          maxLength: 255
+          description: User identity to update.
+        properties:
+          $ref: '#/components/schemas/Properties'
+    AccountUpdate:
+      type: object
+      required:
+        - account_id
+      properties:
+        account_id:
+          type: string
+          description: Identifier for the account.
+        properties:
+          $ref: '#/components/schemas/Properties'
+    AddAccountPropertiesRequest:
+      type: object
+      required:
+        - app_id
+      properties:
+        app_id:
+          type: integer
+          format: int32
+          description: Environment ID of your Heap project.
+        account_id:
+          type: string
+          description: Single account identifier (use with `properties`).
+        properties:
+          $ref: '#/components/schemas/Properties'
+        accounts:
+          type: array
+          description: Bulk list of account updates.
+          items:
+            $ref: '#/components/schemas/AccountUpdate'
+tags:
+  - name: Events
+    description: Server-side event tracking.
+  - name: Users
+    description: Identify users and attach user properties.
+  - name: Accounts
+    description: Manage account-level properties.
