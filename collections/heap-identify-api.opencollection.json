@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Heap Server-Side Add Account Properties Identify API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identify",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://heapanalytics.com/api/v1/identify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Migrates all events from an anonymous user_id to an identified user.\nOne identity is allowed per user_id; a maximum of 10 user_ids can be\nassociated with an identity in a rolling one-month window.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

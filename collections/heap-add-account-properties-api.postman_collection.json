@@ -1,0 +1,153 @@
+{
+  "item": [
+    {
+      "id": "7bbfa4b1-5025-4b78-b032-faaef26148cb",
+      "name": "Add Account Properties",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82b5640d-40ea-4049-ac0d-513c6a44cc44",
+          "name": "Add account properties",
+          "request": {
+            "name": "Add account properties",
+            "description": {
+              "content": "Update properties on one or more accounts. Either provide a single\n`account_id`/`properties` pair or an `accounts` array for bulk updates.\nAccount configuration (or Salesforce integration) must be enabled for\nthe workspace.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "add_account_properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"app_id\": \"<integer>\",\n  \"account_id\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\"\n  },\n  \"accounts\": [\n    {\n      \"account_id\": \"<string>\",\n      \"properties\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    {\n      \"account_id\": \"<string>\",\n      \"properties\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce163dab-8cbc-4be7-8ce3-60bc7e672abd",
+              "name": "Account properties updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "add_account_properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_id\": \"<integer>\",\n  \"account_id\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"string\"\n  },\n  \"accounts\": [\n    {\n      \"account_id\": \"string\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"account_id\": \"string\",\n      \"properties\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac6f27b0-d17f-4684-b221-01984f80a19c",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "add_account_properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_id\": \"<integer>\",\n  \"account_id\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"string\"\n  },\n  \"accounts\": [\n    {\n      \"account_id\": \"string\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"account_id\": \"string\",\n      \"properties\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://heapanalytics.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5051926d-ea0a-416d-a1a0-f603e4427541",
+    "name": "Heap Server-Side Add Account Properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Heap's server-side APIs let backend services send events, attach\nidentities, and update user/account properties in a Heap workspace.\nAll requests are JSON POSTs against https://heapanalytics.com. The\nworkspace is identified via the `app_id` (environment ID) included in\neach request body.\n\n\nContact Support:\n Name: Heap Developers",
+      "type": "text/plain"
+    }
+  }
+}

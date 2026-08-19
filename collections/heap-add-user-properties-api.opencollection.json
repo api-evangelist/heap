@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Heap Server-Side Add Account Properties Add User Properties API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Add User Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add user properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://heapanalytics.com/api/add_user_properties",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add user properties"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

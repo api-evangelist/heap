@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Heap Server-Side Add Account Properties Track API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Track",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track a server-side event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://heapanalytics.com/api/track",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Track a server-side event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

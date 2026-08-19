@@ -1,0 +1,150 @@
+{
+  "item": [
+    {
+      "id": "03dbd3a5-90c0-437a-9a15-28151b8b4b82",
+      "name": "Track",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6930f110-d8f9-44bf-a6d1-5bad4c4581e4",
+          "name": "Track a server-side event",
+          "request": {
+            "name": "Track a server-side event",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"app_id\": \"<string>\",\n  \"event\": \"<string>\",\n  \"identity\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"session_id\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"idempotency_key\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\",\n    \"key_4\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ae65a11-ec61-4073-ac75-7eeaa52ffbbb",
+              "name": "Event accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_id\": \"<string>\",\n  \"event\": \"<string>\",\n  \"identity\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"session_id\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"idempotency_key\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d7e9132-79d1-4bac-8760-5e80fbb4acb1",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_id\": \"<string>\",\n  \"event\": \"<string>\",\n  \"identity\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"session_id\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"idempotency_key\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://heapanalytics.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7a6904b5-294e-4a1c-bf2b-a9f961a52ba6",
+    "name": "Heap Server-Side Add Account Properties Track API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Heap's server-side APIs let backend services send events, attach\nidentities, and update user/account properties in a Heap workspace.\nAll requests are JSON POSTs against https://heapanalytics.com. The\nworkspace is identified via the `app_id` (environment ID) included in\neach request body.\n\n\nContact Support:\n Name: Heap Developers",
+      "type": "text/plain"
+    }
+  }
+}

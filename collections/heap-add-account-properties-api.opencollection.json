@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Heap Server-Side Add Account Properties API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Add Account Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add account properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://heapanalytics.com/api/add_account_properties",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties on one or more accounts. Either provide a single\n`account_id`/`properties` pair or an `accounts` array for bulk updates.\nAccount configuration (or Salesforce integration) must be enabled for\nthe workspace.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
