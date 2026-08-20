@@ -40,6 +40,11 @@ apis:
   humanURL: https://developers.heap.io/reference/server-side-apis-overview
   tags:
   - Analytics
+  - Event
+  - Server-Side
+  - Tracking
+  tags_raw:
+  - Analytics
   - Events
   - Server-Side
   - Tracking
@@ -58,6 +63,10 @@ apis:
   humanURL: https://developers.heap.io/reference/track-1
   tags:
   - Analytics
+  - Event
+  - Tracking
+  tags_raw:
+  - Analytics
   - Events
   - Tracking
   properties:
@@ -71,6 +80,10 @@ apis:
     authentication or identification occurs on the backend rather than the client side.
   humanURL: https://developers.heap.io/reference/identify-1
   tags:
+  - Analytics
+  - Identity
+  - User
+  tags_raw:
   - Analytics
   - Identity
   - Users
@@ -88,6 +101,10 @@ apis:
   tags:
   - Analytics
   - Properties
+  - User
+  tags_raw:
+  - Analytics
+  - Properties
   - Users
   properties:
   - type: Documentation
@@ -101,6 +118,11 @@ apis:
     user level.
   humanURL: https://developers.heap.io/reference/add-account-properties-1
   tags:
+  - Account
+  - Analytics
+  - B2B
+  - Properties
+  tags_raw:
   - Accounts
   - Analytics
   - B2B
@@ -183,6 +205,8 @@ apis:
     retries by Heap.
   humanURL: https://developers.heap.io/reference/server-side-apis-overview
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
