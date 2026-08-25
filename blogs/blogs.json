@@ -3,10 +3,13 @@
   "feeds": [
     {
       "source": "https://developers.heap.io/reference/authentication",
-      "error": "HTTPError"
+      "feed_url": "https://developers.heap.io/reference/authentication",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-08-06T14:08:46Z",
+  "fetched": "2026-08-22T20:20:02Z",
   "agent_pulled": "2026-06-27"
 }
