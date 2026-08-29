@@ -1,11 +1,8 @@
 {
   "provider": "heap",
   "sources": [
-    "heap-add-account-properties-api-openapi.yml",
-    "heap-add-user-properties-api-openapi.yml",
-    "heap-identify-api-openapi.yml",
-    "heap-track-api-openapi.yml",
-    "heap-webhooks-api-openapi.yml"
+    "_original/heap-openapi.yml",
+    "_original/heap-webhooks-openapi.yml"
   ],
   "outputs": [
     "heap-add-account-properties-api-openapi.yml",
@@ -17,6 +14,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "heap-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "heap-openapi.yml: tagged paths POST /api/track -> Track",
+    "heap-openapi.yml: tagged paths POST /api/v1/identify -> Identify",
+    "heap-openapi.yml: tagged paths POST /api/add_user_properties -> Add User Properties",
+    "heap-openapi.yml: tagged paths POST /api/add_account_properties -> Add Account Properties",
+    "heap-openapi.yml: declared missing tag: Add Account Properties",
+    "heap-openapi.yml: declared missing tag: Add User Properties",
+    "heap-openapi.yml: declared missing tag: Identify",
+    "heap-openapi.yml: declared missing tag: Track",
+    "heap-webhooks-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "heap-add-account-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "heap-add-user-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "heap-identify-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "heap-track-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "heap-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
