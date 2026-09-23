@@ -9,9 +9,7 @@ info:
 
     workspace is identified via the `app_id` (environment ID) included in
 
-    each request body.
-
-    '
+    each request body.'
   version: 1.0.0
   contact:
     name: Heap Developers
@@ -29,9 +27,7 @@ paths:
 
         One identity is allowed per user_id; a maximum of 10 user_ids can be
 
-        associated with an identity in a rolling one-month window.
-
-        '
+        associated with an identity in a rolling one-month window.'
       operationId: identify
       requestBody:
         required: true

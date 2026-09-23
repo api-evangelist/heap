@@ -9,9 +9,7 @@ info:
 
     workspace is identified via the `app_id` (environment ID) included in
 
-    each request body.
-
-    '
+    each request body.'
   version: 1.0.0
   contact:
     name: Heap Developers
@@ -31,9 +29,7 @@ paths:
 
         Account configuration (or Salesforce integration) must be enabled for
 
-        the workspace.
-
-        '
+        the workspace.'
       operationId: addAccountProperties
       requestBody:
         required: true
@@ -50,16 +46,6 @@ paths:
       - Add Account Properties
 components:
   schemas:
-    AccountUpdate:
-      type: object
-      required:
-      - account_id
-      properties:
-        account_id:
-          type: string
-          description: Identifier for the account.
-        properties:
-          $ref: '#/components/schemas/Properties'
     Properties:
       type: object
       description: 'Key-value pairs of properties. Keys and string values must be under
@@ -71,6 +57,16 @@ components:
         oneOf:
         - type: string
         - type: number
+    AccountUpdate:
+      type: object
+      required:
+      - account_id
+      properties:
+        account_id:
+          type: string
+          description: Identifier for the account.
+        properties:
+          $ref: '#/components/schemas/Properties'
     AddAccountPropertiesRequest:
       type: object
       required:

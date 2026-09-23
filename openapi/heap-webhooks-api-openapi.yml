@@ -3,27 +3,7 @@ info:
   title: Heap Partner (Data-out API) Webhooks API
   description: 'Heap''s partner webhook surface (also called the "Data-out API") delivers
 
-    behavioral segment membership deltas to partner-hosted endpoints. The
-
-    only documented webhook action today is `segment.users.sync`, which
-
-    sends adds and removes for a Heap segment on a roughly 4-hour cadence.
-
-
-    Partners register an HTTPS endpoint with Heap and receive POST requests
-
-    signed with a `Heap-Hash` header (timestamp + HMAC-SHA256 of the body
-
-    using a shared `webhook_secret_key`). Implementations should verify the
-
-    timestamp is within tolerance, recompute the signature, and respond
-
-    `200 OK` to avoid retries.
-
-
-    Source: https://github.com/heap/heap-partner-api-reference (webhook_spec.yaml)
-
-    '
+    behavioral segment membership deltas to partner-hosted endpoints.'
   version: 0.0.1
   contact:
     name: Heap Developers
@@ -33,16 +13,14 @@ servers:
   description: Partner-hosted webhook receiver (registered with Heap)
 tags:
 - name: Webhooks
-  description: "Partner-registered webhook endpoints invoked by Heap. The only\ndocumented action type is `segment.users.sync`, which delivers\ndelta adds/removes for a Heap behavioral segment.\n\nSignature verification:\n  1. Parse the `Heap-Hash` header (comma-separated key:value pairs).\n  2. Confirm the `ts` value is within the partner's tolerance window.\n  3. Concatenate `${ts}${requestbody}`.\n  4. Compute HMAC-SHA256 using the `webhook_secret_key` assigned at\n     webhook creation.\n  5. Constant-time compare against the `hmac` value from the header.\n\nReturn `200 OK` on success; `429` or other non-2xx responses trigger\nretries by Heap.\n"
+  description: Partner-registered webhook endpoints invoked by Heap.
 paths:
   /{partner_webhook_sync_url}:
     post:
       summary: segment.users.sync webhook receiver
       description: 'Heap POSTs a delta sync payload to the partner''s registered webhook
 
-        URL whenever segment membership changes need to be propagated.
-
-        '
+        URL whenever segment membership changes need to be propagated.'
       operationId: segmentUsersSync
       tags:
       - Webhooks
@@ -120,6 +98,22 @@ paths:
           $ref: '#/components/responses/Default'
 components:
   schemas:
+    WebhookSyncRequest:
+      type: object
+      properties:
+        id_token:
+          type: string
+          format: uuid
+          description: Identifier for the Heap customer driving the sync.
+        action_type:
+          type: string
+          enum:
+          - segment.users.sync
+          description: Webhook action type. Only `segment.users.sync` is documented.
+        customer_config:
+          $ref: '#/components/schemas/CustomerConfig'
+        data:
+          $ref: '#/components/schemas/SegmentDeltaSync'
     SegmentDeltaSync:
       type: object
       properties:
@@ -199,22 +193,6 @@ components:
                   display_name:
                     type: string
                     description: Display label for the selected field value.
-    WebhookSyncRequest:
-      type: object
-      properties:
-        id_token:
-          type: string
-          format: uuid
-          description: Identifier for the Heap customer driving the sync.
-        action_type:
-          type: string
-          enum:
-          - segment.users.sync
-          description: Webhook action type. Only `segment.users.sync` is documented.
-        customer_config:
-          $ref: '#/components/schemas/CustomerConfig'
-        data:
-          $ref: '#/components/schemas/SegmentDeltaSync'
   parameters:
     SignatureHeader:
       name: Heap-Hash
@@ -241,7 +219,7 @@ components:
                 description: Specific error.
           example:
             error: Invalid signature
-    Default:
-      description: Unexpected 4XX/5XX response; Heap will retry.
     TooManyRequests:
       description: Rate limited; Heap will retry.
+    Default:
+      description: Unexpected 4XX/5XX response; Heap will retry.
