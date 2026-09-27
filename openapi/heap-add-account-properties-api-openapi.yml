@@ -46,17 +46,6 @@ paths:
       - Add Account Properties
 components:
   schemas:
-    Properties:
-      type: object
-      description: 'Key-value pairs of properties. Keys and string values must be under
-
-        1024 characters; values may be strings or numbers.
-
-        '
-      additionalProperties:
-        oneOf:
-        - type: string
-        - type: number
     AccountUpdate:
       type: object
       required:
@@ -86,3 +75,14 @@ components:
           description: Bulk list of account updates.
           items:
             $ref: '#/components/schemas/AccountUpdate'
+    Properties:
+      type: object
+      description: 'Key-value pairs of properties. Keys and string values must be under
+
+        1024 characters; values may be strings or numbers.
+
+        '
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number

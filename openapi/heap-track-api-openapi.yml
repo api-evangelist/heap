@@ -39,17 +39,6 @@ paths:
       - Track
 components:
   schemas:
-    Properties:
-      type: object
-      description: 'Key-value pairs of properties. Keys and string values must be under
-
-        1024 characters; values may be strings or numbers.
-
-        '
-      additionalProperties:
-        oneOf:
-        - type: string
-        - type: number
     TrackRequest:
       type: object
       required:
@@ -82,3 +71,14 @@ components:
           description: Unique ID to prevent event duplication.
         properties:
           $ref: '#/components/schemas/Properties'
+    Properties:
+      type: object
+      description: 'Key-value pairs of properties. Keys and string values must be under
+
+        1024 characters; values may be strings or numbers.
+
+        '
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number

@@ -97,102 +97,6 @@ paths:
         default:
           $ref: '#/components/responses/Default'
 components:
-  schemas:
-    WebhookSyncRequest:
-      type: object
-      properties:
-        id_token:
-          type: string
-          format: uuid
-          description: Identifier for the Heap customer driving the sync.
-        action_type:
-          type: string
-          enum:
-          - segment.users.sync
-          description: Webhook action type. Only `segment.users.sync` is documented.
-        customer_config:
-          $ref: '#/components/schemas/CustomerConfig'
-        data:
-          $ref: '#/components/schemas/SegmentDeltaSync'
-    SegmentDeltaSync:
-      type: object
-      properties:
-        segment:
-          $ref: '#/components/schemas/SegmentInfo'
-        sync_info:
-          $ref: '#/components/schemas/SyncInfo'
-        add:
-          type: array
-          description: Users entering the segment since the last sync.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: User identifier per the customer's chosen mapping.
-        remove:
-          type: array
-          description: Users exiting the segment since the last sync.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: User identifier per the customer's chosen mapping.
-    SegmentInfo:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: Heap segment ID.
-        name:
-          type: string
-          description: Heap segment name.
-    SyncInfo:
-      type: object
-      properties:
-        page_number:
-          type: integer
-          format: int64
-          description: Current page number in this sync run.
-        total_pages:
-          type: integer
-          format: int64
-          description: Total pages in this sync run.
-        sync_task_id:
-          type: string
-          format: uuid
-          description: Unique identifier for this sync run.
-    CustomerConfig:
-      type: object
-      description: Optional customer-supplied configuration captured during integration setup.
-      properties:
-        fields:
-          type: array
-          items:
-            type: object
-            properties:
-              field_id:
-                type: string
-                description: ID for the customer-configured field.
-              field_display_name:
-                type: string
-                description: Display label shown to the customer.
-              field_type:
-                type: string
-                enum:
-                - identity_mapping
-                description: Optional field type, e.g. identity mapping selectors.
-              value:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    description: Identifier for the field value selected by the customer.
-                  display_name:
-                    type: string
-                    description: Display label for the selected field value.
   parameters:
     SignatureHeader:
       name: Heap-Hash
@@ -223,3 +127,99 @@ components:
       description: Rate limited; Heap will retry.
     Default:
       description: Unexpected 4XX/5XX response; Heap will retry.
+  schemas:
+    SegmentDeltaSync:
+      type: object
+      properties:
+        segment:
+          $ref: '#/components/schemas/SegmentInfo'
+        sync_info:
+          $ref: '#/components/schemas/SyncInfo'
+        add:
+          type: array
+          description: Users entering the segment since the last sync.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: User identifier per the customer's chosen mapping.
+        remove:
+          type: array
+          description: Users exiting the segment since the last sync.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: User identifier per the customer's chosen mapping.
+    SyncInfo:
+      type: object
+      properties:
+        page_number:
+          type: integer
+          format: int64
+          description: Current page number in this sync run.
+        total_pages:
+          type: integer
+          format: int64
+          description: Total pages in this sync run.
+        sync_task_id:
+          type: string
+          format: uuid
+          description: Unique identifier for this sync run.
+    WebhookSyncRequest:
+      type: object
+      properties:
+        id_token:
+          type: string
+          format: uuid
+          description: Identifier for the Heap customer driving the sync.
+        action_type:
+          type: string
+          enum:
+          - segment.users.sync
+          description: Webhook action type. Only `segment.users.sync` is documented.
+        customer_config:
+          $ref: '#/components/schemas/CustomerConfig'
+        data:
+          $ref: '#/components/schemas/SegmentDeltaSync'
+    CustomerConfig:
+      type: object
+      description: Optional customer-supplied configuration captured during integration setup.
+      properties:
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              field_id:
+                type: string
+                description: ID for the customer-configured field.
+              field_display_name:
+                type: string
+                description: Display label shown to the customer.
+              field_type:
+                type: string
+                enum:
+                - identity_mapping
+                description: Optional field type, e.g. identity mapping selectors.
+              value:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier for the field value selected by the customer.
+                  display_name:
+                    type: string
+                    description: Display label for the selected field value.
+    SegmentInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Heap segment ID.
+        name:
+          type: string
+          description: Heap segment name.
