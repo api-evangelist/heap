@@ -46,16 +46,6 @@ paths:
       - Add Account Properties
 components:
   schemas:
-    AccountUpdate:
-      type: object
-      required:
-      - account_id
-      properties:
-        account_id:
-          type: string
-          description: Identifier for the account.
-        properties:
-          $ref: '#/components/schemas/Properties'
     AddAccountPropertiesRequest:
       type: object
       required:
@@ -86,3 +76,13 @@ components:
         oneOf:
         - type: string
         - type: number
+    AccountUpdate:
+      type: object
+      required:
+      - account_id
+      properties:
+        account_id:
+          type: string
+          description: Identifier for the account.
+        properties:
+          $ref: '#/components/schemas/Properties'

@@ -97,62 +97,7 @@ paths:
         default:
           $ref: '#/components/responses/Default'
 components:
-  parameters:
-    SignatureHeader:
-      name: Heap-Hash
-      in: header
-      required: true
-      description: 'Heap signature header. Comma-separated key:value pairs containing a
-
-        timestamp (`ts`) and HMAC-SHA256 signature (`hmac`).
-
-        '
-      schema:
-        type: string
-      example: ts:150000000,hmac:XXXXXXXXX
-  responses:
-    Unauthorized:
-      description: Signature verification failed.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                description: Specific error.
-          example:
-            error: Invalid signature
-    TooManyRequests:
-      description: Rate limited; Heap will retry.
-    Default:
-      description: Unexpected 4XX/5XX response; Heap will retry.
   schemas:
-    SegmentDeltaSync:
-      type: object
-      properties:
-        segment:
-          $ref: '#/components/schemas/SegmentInfo'
-        sync_info:
-          $ref: '#/components/schemas/SyncInfo'
-        add:
-          type: array
-          description: Users entering the segment since the last sync.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: User identifier per the customer's chosen mapping.
-        remove:
-          type: array
-          description: Users exiting the segment since the last sync.
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: User identifier per the customer's chosen mapping.
     SyncInfo:
       type: object
       properties:
@@ -168,22 +113,6 @@ components:
           type: string
           format: uuid
           description: Unique identifier for this sync run.
-    WebhookSyncRequest:
-      type: object
-      properties:
-        id_token:
-          type: string
-          format: uuid
-          description: Identifier for the Heap customer driving the sync.
-        action_type:
-          type: string
-          enum:
-          - segment.users.sync
-          description: Webhook action type. Only `segment.users.sync` is documented.
-        customer_config:
-          $ref: '#/components/schemas/CustomerConfig'
-        data:
-          $ref: '#/components/schemas/SegmentDeltaSync'
     CustomerConfig:
       type: object
       description: Optional customer-supplied configuration captured during integration setup.
@@ -213,6 +142,47 @@ components:
                   display_name:
                     type: string
                     description: Display label for the selected field value.
+    SegmentDeltaSync:
+      type: object
+      properties:
+        segment:
+          $ref: '#/components/schemas/SegmentInfo'
+        sync_info:
+          $ref: '#/components/schemas/SyncInfo'
+        add:
+          type: array
+          description: Users entering the segment since the last sync.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: User identifier per the customer's chosen mapping.
+        remove:
+          type: array
+          description: Users exiting the segment since the last sync.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: User identifier per the customer's chosen mapping.
+    WebhookSyncRequest:
+      type: object
+      properties:
+        id_token:
+          type: string
+          format: uuid
+          description: Identifier for the Heap customer driving the sync.
+        action_type:
+          type: string
+          enum:
+          - segment.users.sync
+          description: Webhook action type. Only `segment.users.sync` is documented.
+        customer_config:
+          $ref: '#/components/schemas/CustomerConfig'
+        data:
+          $ref: '#/components/schemas/SegmentDeltaSync'
     SegmentInfo:
       type: object
       properties:
@@ -223,3 +193,33 @@ components:
         name:
           type: string
           description: Heap segment name.
+  parameters:
+    SignatureHeader:
+      name: Heap-Hash
+      in: header
+      required: true
+      description: 'Heap signature header. Comma-separated key:value pairs containing a
+
+        timestamp (`ts`) and HMAC-SHA256 signature (`hmac`).
+
+        '
+      schema:
+        type: string
+      example: ts:150000000,hmac:XXXXXXXXX
+  responses:
+    Unauthorized:
+      description: Signature verification failed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Specific error.
+          example:
+            error: Invalid signature
+    Default:
+      description: Unexpected 4XX/5XX response; Heap will retry.
+    TooManyRequests:
+      description: Rate limited; Heap will retry.
