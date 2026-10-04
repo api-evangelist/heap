@@ -30,6 +30,9 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/heap.png
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
   - Analytics
   - Autocapture
@@ -228,6 +231,9 @@ apis:
   - type: Reference
     url: https://github.com/heap/heap-partner-api-reference
 common:
+  - type: CapabilityMap
+    url: capabilities/heap-capability-edges.yml
+    name: Heap Business Capability Map
   - type: AgenticAccess
     url: agentic-access/heap-agentic-access.yml
   - type: TrustCenter
