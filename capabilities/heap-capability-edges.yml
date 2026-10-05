@@ -1,0 +1,53 @@
+slug: heap
+provider: Heap
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Track
+  spec_file: heap-track-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.85
+  evidence: POST /api/track  track  Track a server-side event ... 'let backend services send events'
+  reason: Explicitly ingests product usage events from server runtimes into the analytics platform — a
+    direct match for product telemetry instrumentation.
+- tag: Add Account Properties
+  spec_file: heap-add-account-properties-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.7
+  evidence: 'POST /api/add_account_properties  addAccountProperties  Add account properties ... schemas:
+    AddAccountPropertiesRequest, AccountUpdate'
+  reason: Heap is a product analytics platform; this server-side endpoint enriches account-level attributes
+    in the telemetry workspace, supporting product usage telemetry capture/instrumentation rather than
+    CRM master data.
+- tag: Add User Properties
+  spec_file: heap-add-user-properties-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.7
+  evidence: POST /api/add_user_properties  addUserProperties  Add user properties
+  reason: Sends user property enrichment into the Heap analytics workspace ('update user/account properties
+    in a Heap workspace'), i.e. instrumentation of product telemetry data, not customer master data management.
+- tag: Identify
+  spec_file: heap-identify-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.7
+  evidence: POST /api/v1/identify  identify  Identify a user ... 'attach identities' to a Heap workspace
+  reason: Attaches an identity to analytics tracking sessions so behavioural events can be stitched to
+    a user; this is telemetry instrumentation, not IAM or customer identity resolution.
