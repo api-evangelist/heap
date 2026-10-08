@@ -231,6 +231,12 @@ apis:
   - type: Reference
     url: https://github.com/heap/heap-partner-api-reference
 common:
+  - type: Plans
+    url: plans/heap-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/heap-rate-limits.yml
+  - type: FinOps
+    url: finops/heap-finops.yml
   - type: CapabilityMap
     url: capabilities/heap-capability-edges.yml
     name: Heap Business Capability Map
