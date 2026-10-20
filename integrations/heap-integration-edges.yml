@@ -1,4 +1,21 @@
-generated: '2026-10-14'
+generated: '2026-10-20'
+method: searched
+source:
+- https://docs.mparticle.com/integrations/heap/event/
+- https://hightouch.com/docs/destinations/heap
+- https://zapier.com/apps/heap/integrations
+- https://n8n.io/integrations/heap/
+- https://composio.dev/toolkits/heap
+- https://monid.ai/tools/heap
+checked:
+- https://docs.mparticle.com/integrations/heap/event/
+- https://hightouch.com/docs/destinations/heap
+- https://composio.dev/toolkits/heap
+- https://monid.ai/tools/heap
+- https://n8n.io/integrations/heap/
+- https://zapier.com/apps/heap/integrations
+summary: null
+marketplace_apps: []
 edges:
 - partner_name: mParticle
   partner: mparticle
@@ -37,10 +54,4 @@ edges:
       status: released
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
-method: searched
-checked:
-- https://docs.mparticle.com/integrations/heap/event/
-- https://hightouch.com/docs/destinations/heap
-source:
-- https://docs.mparticle.com/integrations/heap/event/
-- https://hightouch.com/docs/destinations/heap
+templates: []
