@@ -1,4 +1,4 @@
-# Heap (heap)
+# Heap
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,174 +66,136 @@
 
 Heap is a digital analytics platform that automatically captures every user interaction on web and mobile applications without requiring manual event tracking code. It provides product analytics, session replay, and behavioral data science capabilities to help teams understand user behavior and improve digital experiences.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/apis.yml)
+**Areas:** Analytics · Autocapture · Digital Analytics · Product Analytics · Session Replay · User Behavior
 
-## Scope
+## Heap on APIs.io
 
-- **Type:** Index
+Everything profiled for Heap is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/heap/](https://apis.io/providers/heap/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Analytics
-- Autocapture
-- Digital Analytics
-- Product Analytics
-- Session Replay
-- User Behavior
+- [Heap Server-Side API](https://apis.io/apis/heap/server-side-api/) — The Heap Server-Side API allows developers to send track, identify, and add user properties events to Heap from backend servers. It supports sending custom…
+- [Heap Track API](https://apis.io/apis/heap/track-api/) — The Heap Track API enables developers to send custom track events from server-side applications to Heap. Each event includes an identity, event name, and…
+- [Heap Identify API](https://apis.io/apis/heap/identify-api/) — The Heap Identify API allows developers to associate a user identity with Heap's automatically captured data from the server side. This enables linking…
+- [Heap Add User Properties API](https://apis.io/apis/heap/add-user-properties-api/) — The Heap Add User Properties API enables developers to attach custom properties to user profiles from server-side applications. These properties can include…
+- [Heap Add Account Properties API](https://apis.io/apis/heap/add-account-properties-api/) — The Heap Add Account Properties API allows developers to attach custom properties to account-level profiles from server-side applications. This is used for…
+- [Heap Add Account Properties API](https://apis.io/apis/heap/heap-add-account-properties-api/) — The Add Account Properties API from Heap — 1 operation(s) for add account properties.
+- [Heap Add User Properties API](https://apis.io/apis/heap/heap-add-user-properties-api/) — The Add User Properties API from Heap — 1 operation(s) for add user properties.
+- [Heap Identify API](https://apis.io/apis/heap/heap-identify-api/) — The Identify API from Heap — 1 operation(s) for identify.
+- [Heap Track API](https://apis.io/apis/heap/heap-track-api/) — The Track API from Heap — 1 operation(s) for track.
+- [Heap Webhooks API](https://apis.io/apis/heap/heap-webhooks-api/) — Partner-registered webhook endpoints invoked by Heap. The only documented action type is `segment.users.sync`, which delivers delta adds/removes for a Heap…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Heap Server-Side API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Heap Server-Side API allows developers to send track, identify, and add user properties events to Heap from backend servers. It supports sending custom events and user properties that cannot be captured through Heap's automatic client-side tracking, such as server-side transactions, subscription changes, and backend process completions.
+- [Heap Agentic Access](https://apis.io/agentic-access/heap/heap-agentic-access/)
 
-- **Human URL:** [https://developers.heap.io/reference/server-side-apis-overview](https://developers.heap.io/reference/server-side-apis-overview)
+#### Collections (7)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Analytics
-- Events
-- Server-Side
-- Tracking
+- [Heap Server-Side API](https://apis.io/collections/heap/open-heap/)
+- [Heap Server-Side Add Account Properties API](https://apis.io/collections/heap/open-heap-add-account-properties-api/)
+- [Heap Server-Side Add Account Properties Add User Properties API](https://apis.io/collections/heap/open-heap-add-user-properties-api/)
+- [Heap Server-Side Add Account Properties Identify API](https://apis.io/collections/heap/open-heap-identify-api/)
+- [Heap Server-Side Add Account Properties Track API](https://apis.io/collections/heap/open-heap-track-api/)
+- [Heap Partner Webhooks (Data-out API)](https://apis.io/collections/heap/open-heap-webhooks/)
+- [Heap Server-Side Add Account Properties Webhooks API](https://apis.io/collections/heap/open-heap-webhooks-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://developers.heap.io/reference/server-side-apis-overview)
-- [Getting Started](https://developers.heap.io/docs/getting-started)
-- [Postman Collection](collections/heap-webhooks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap-webhooks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/heap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Heap Track API
+- [Heap Domain Security](https://apis.io/security/heap/heap-domain-security/)
+- [Heap Trust Center](https://apis.io/security/heap/heap-trust-center/)
 
-The Heap Track API enables developers to send custom track events from server-side applications to Heap. Each event includes an identity, event name, and optional properties. This API is used to capture important backend events such as purchases, subscription upgrades, or other server-side actions that supplement Heap's automatic client-side tracking.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://developers.heap.io/reference/track-1](https://developers.heap.io/reference/track-1)
+Published plans, tiers and prices.
 
-#### Tags
+- [Heap Plans Pricing](https://apis.io/plans/heap/heap-plans-pricing/)
 
-- Analytics
-- Events
-- Tracking
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://developers.heap.io/reference/track-1)
-- [Postman Collection](collections/heap-webhooks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap-webhooks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/heap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Heap Rate Limits](https://apis.io/rate-limits/heap/heap-rate-limits/)
 
-### Heap Identify API
+#### FinOps (1)
 
-The Heap Identify API allows developers to associate a user identity with Heap's automatically captured data from the server side. This enables linking anonymous user sessions to known user identities when authentication or identification occurs on the backend rather than the client side.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://developers.heap.io/reference/identify-1](https://developers.heap.io/reference/identify-1)
+- [Heap Finops](https://apis.io/finops/heap/heap-finops/)
 
-#### Tags
+## Where to find this API
 
-- Analytics
-- Identity
-- Users
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [Documentation](https://developers.heap.io/reference/identify-1)
-- [Postman Collection](collections/heap-webhooks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap-webhooks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/heap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Heap Add User Properties API
-
-The Heap Add User Properties API enables developers to attach custom properties to user profiles from server-side applications. These properties can include attributes such as subscription tier, account type, company name, or any other user-level data that enriches Heap's behavioral analytics and segmentation capabilities.
-
-- **Human URL:** [https://developers.heap.io/reference/add-user-properties-1](https://developers.heap.io/reference/add-user-properties-1)
-
-#### Tags
-
-- Analytics
-- Properties
-- Users
-
-#### Properties
-
-- [Documentation](https://developers.heap.io/reference/add-user-properties-1)
-- [Postman Collection](collections/heap-webhooks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap-webhooks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/heap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Heap Add Account Properties API
-
-The Heap Add Account Properties API allows developers to attach custom properties to account-level profiles from server-side applications. This is used for B2B analytics scenarios where users belong to organizations or accounts, enabling analysis at the account level in addition to the individual user level.
-
-- **Human URL:** [https://developers.heap.io/reference/add-account-properties-1](https://developers.heap.io/reference/add-account-properties-1)
-
-#### Tags
-
-- Accounts
-- Analytics
-- B2B
-- Properties
-
-#### Properties
-
-- [Documentation](https://developers.heap.io/reference/add-account-properties-1)
-- [Postman Collection](collections/heap-webhooks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap-webhooks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/heap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Heap Partner Webhooks (Data-out API)
-
-Heap's partner webhook surface (also called the Data-out API) delivers behavioral segment membership deltas to partner-hosted HTTPS endpoints. The documented action type is segment.users.sync, which sends adds and removes for a Heap segment on a roughly four-hour cadence. Requests are signed with a Heap-Hash header containing a timestamp and HMAC-SHA256 of the body using a shared webhook secret key, and partners are expected to verify the signature and respond 200 OK to avoid retries.
-
-- **Human URL:** [https://developers.heap.io/docs/creating-a-new-heap-integration-partners](https://developers.heap.io/docs/creating-a-new-heap-integration-partners)
-
-#### Tags
-
-- Analytics
-- Segments
-- Webhooks
-
-#### Properties
-
-- [Documentation](https://developers.heap.io/docs/creating-a-new-heap-integration-partners)
-- [Reference](https://github.com/heap/heap-partner-api-reference)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/heap/refs/heads/main/openapi/heap-webhooks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/heap-webhooks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap-webhooks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/heap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/heap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/heap)
-- [LinkedIn](https://www.linkedin.com/company/heap-inc-)
 - [Website](https://www.heap.io)
 - [Documentation](https://developers.heap.io)
-- [Getting Started](https://developers.heap.io/docs/getting-started)
-- [Authentication](https://developers.heap.io/reference/authentication)
-- [Blog](https://www.heap.io/blog)
+- [Getting started](https://developers.heap.io/docs/getting-started)
 - [Pricing](https://www.heap.io/pricing)
-- [Login](https://heapanalytics.com/app/login)
-- [Sign Up](https://heapanalytics.com/signup)
 - [Support](https://help.heap.io)
-- [Terms of Service](https://www.heap.io/terms-of-service)
-- [Privacy Policy](https://www.heap.io/privacy-policy)
-- [Status Page](https://status.heap.io)
-- [Features](undefined)
-- [Integrations](https://www.heap.io/partners)
-- [L L Ms Txt](https://developers.heap.io/llms.txt)
+- [Blog](https://www.heap.io/blog)
+- [Terms of service](https://www.heap.io/terms-of-service)
+- [Privacy policy](https://www.heap.io/privacy-policy)
+- [GitHub](https://github.com/heap)
+- [Status](https://status.heap.io)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 38.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 47.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 41.7 |
+| Access clarity | 32.9 |
+
+**Agent readiness 26.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | verified |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/heap/](https://apis.io/providers/heap/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Heap: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/heap/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
